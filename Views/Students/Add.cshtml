@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model StudentInformationProject.Models.ViewModels.AddStudentViewModel
+
+<h1>Add New Student Info</h1>
+
+<form method="post">
+    <div>
+        <label class="form-label">Name</Label>
+        @Html.TextBoxFor(m => m.StudentManageData.Name)      
+    </div>
+
+    <div>
+        <label class="form-label mr-4">Gender</Label>
+        @Html.RadioButton("Gender","male", true)
+        <label class="form-label">Male</label">
+        @Html.RadioButton("Gender","female")
+        <label class="form-label">Female</label">
+        @* <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="option1" asp-for="Gender">
+            <label class="form-check-label" for="flexRadioDefault1">Male</label">
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="options2" asp-for="Gender">
+            <label class="form-check-label" for="flexRadioDefault2">Female</label>
+        </div> *@
+    </div>
+
+    <div>
+        <label class="form-label">Date of Birth</Label>
+       @*@ @Html.TextBoxFor(m => m.StudentManageData.DateOfBirth, new { @class = "date-picker form-control" })
+        @Html.TextBoxFor(m => m.StudentManageData.DateOfBirth, new { @class = "date-picker form-control" }) *@
+        <input type="date" class="form-control" asp)/>
+    </div>
+
+    <div>
+        <label class="form-label">Class</Label>
+        @Html.DropDownListFor(m => m.StudentManageData.ClassId, Model.ClassList, "Select a class", new { @class = "form-select" })
+        @* <select class="form-select" aria-label="Select class" asp-for="ClassId">
+            <option selected>Select class</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select> *@
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $(function() {
+            $(".date-picker").datepicker({
+                format: "yyyy-mm-dd"
+            });
+        });
+    </script>
+}
+
